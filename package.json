@@ -1,0 +1,18 @@
+{
+  "name": "minesweeper",
+  "version": "1.0.0",
+  "description": "Minesweeper was one of the first PC games I played. When I was a child, in the '90s, I remember going to the supermarket, stopping at the computer sector and asking for the password so I could play the games that came installed on Windows while my parents went shopping. When I finally got my first Windows 95 PC I mainly played demo versions and the free games that came with the computer, like solitaire, pinball and minesweeper. The latter stick with me for a few years, whenever I needed to wait midnight to connect to the internet or download a 7 MB file using dial-up, there I was playing minesweeper.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index"
+  },
+  "author": "Marcus Vinicius Laganá",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
