@@ -15,15 +15,15 @@ This project was developed using React JS, Express and MongoDB with the objectiv
 We will start by creating a backend RESTFul API using Express.
 
 ### Configuring the environment
-1. Create a new folder for the project, open the terminal in that folder and type `**npm init**`.
-2. Follow the intructions to create the _*package.json*_ file. You can always edit it latter and change its content.
-3. Install express, wich will be used to create the API: `*npm install express*`
-4. Install nodemon as a development dependency, which will be used to restart the development server whenever any project file is updated and saved: `*npm install nodemon -D*`
-5. Create a new file: _*index.js*_
-6. Open the _*package.json*_ file and insert a development script as shown below:
-```
+1. Create a new folder for the project, open the terminal in that folder and type **`npm init`**.
+2. Follow the intructions to create the ***package.json*** file. You can always edit it latter and change its content.
+3. Install express, wich will be used to create the API: **`npm install express`**
+4. Install nodemon as a development dependency, which will be used to restart the development server whenever any project file is updated and saved: **`npm install nodemon -D`**
+5. Create a new file: ***index.js***
+6. Open the ***package.json*** file and insert a development script as shown below:
+```json
 "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    *"dev": "nodemon index"*
+    "dev": "nodemon index"
   },
 ```
