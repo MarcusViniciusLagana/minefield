@@ -14,7 +14,9 @@ The application is divided into a front and a backend.
 The backend will store the mines positions, the player ID, its max score and other statistics; and the frontend will take care of the logic of the game.
 They will exchange data following the diagram bellow:
 
-![Project Diagram](minesweeper.png)
+<p align="center">
+  <img width="800" alt="Project Diagram" src="minesweeper.png">
+</p>
 
 ## Backend
 
