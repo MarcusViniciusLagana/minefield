@@ -15,7 +15,7 @@ The backend will store the mines positions, the player ID, its max score and oth
 They will exchange data following the diagram bellow:
 
 <p align="center">
-  <img width="800" alt="Project Diagram" src="minesweeper.png">
+  <img width="800" alt="Project Diagram" src="minesweeper-crop.png">
 </p>
 
 ## Backend
