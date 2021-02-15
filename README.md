@@ -6,24 +6,54 @@ The game is pretty straightforward: there is a field with several hidden mines a
 
 ## Introduction
 
-This project was developed using React JS, Express and MongoDB with the objective of practicing and assimilating knowledge acquired in the frontend and backend courses from Sansumg Ocean, given by professor [Paulo Salvatore](https://github.com/paulosalvatore) on December 2020. The following content will describe the project and how to reproduce and expand it yourself, so that knowledge can be disseminated. I believe that, after teaching, doing is the best way to learn something.
+This project was developed using React JS, Express and MongoDB with the objective of practicing and assimilating knowledge acquired in the frontend and backend courses from Sansumg Ocean, given by professor [Paulo Salvatore](https://github.com/paulosalvatore) on December 2020. The following content will describe the project, the technical choices and some options for future implementations, feel free to reach me with your feedbacks or questions at marcus.lagana@gmail.com
 
 ## Description
 
+The application is divided into a front and a backend.
+The backend will store the mines positions, the player ID, its max score and other statistics; and the frontend will take care of the logic of the game.
+They will exchange data following the diagram bellow:
+
+![Project Diagram](minesweeper.png)
+
 ## Backend
 
-We will start by creating a backend RESTFul API using Express.
+We will start by creating a backend RESTful API using Express.
 
 ### Configuring the environment
 1. Create a new folder for the project, open the terminal in that folder and type **`npm init`**.
 2. Follow the intructions to create the ***package.json*** file. You can always edit it latter and change its content.
-3. Install express, wich will be used to create the API: **`npm install express`**
-4. Install nodemon as a development dependency, which will be used to restart the development server whenever any project file is updated and saved: **`npm install nodemon -D`**
-5. Create a new file: ***index.js***
-6. Open the ***package.json*** file and insert a development script as shown below:
+3. Install **express**, wich will be used to create the API: **`npm install express`**
+4. Install **nodemon** as a development dependency, which will be used to restart the development server whenever any project file is updated and saved: **`npm install nodemon -D`**
+5. Open the ***package.json*** file and insert a development script as shown below (don't forget to add a comma at the end of the test script line):
 ```json
 "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index"
   },
 ```
+6. Create a new file: ***index.js***
+7. Fill ***index.js*** with the following minimal code:
+```js
+const express = require('express');
+
+const port = 5000;
+
+const app = express();
+
+app.get('', async (req, res) => {
+    res.send({msg: 'Hello World'});
+});
+
+app.listen(port, () => {
+    console.log(`App running on http://localhost:${port}`);
+});
+```
+8. Run the server by typing **`npm run dev`** in the terminal and access the API at (http://localhost:5000). `{"msg": "Hello World"}` shall be displayed.
+
+**Summary**
+On steps 1 and 2, **node** was installed and the file ***package.json*** of the project was created, which is responsible for configuring **node** and managing all installed packages. Then **express** and **nodemon** were installed, **express** being the package used to create the API and **nodemon** the one that will restart our server with every file change during the development. On step 5 the development script (used to run the server) was created, and then the first javascript file was created and the server was started and tested.
+
+For now, the app
+
+### Creating the endpoints
