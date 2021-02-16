@@ -15,7 +15,7 @@ The backend stored the mines positions, the player ID, its best time and other s
 They exchanged data following the diagram bellow:
 
 <p align="center">
-  <img width="1000" alt="Project Diagram" src="minesweeper-crop.png">
+  <img width="1000" alt="Project Diagram" src="project-diagram.png">
 </p>
 
 ## Backend
