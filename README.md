@@ -10,9 +10,9 @@ This project was developed using React JS, Express and MongoDB with the objectiv
 
 ## Description
 
-The application is divided into a front and a backend.
-The backend will store the mines positions, the player ID, its max score and other statistics; and the frontend will take care of the logic of the game.
-They will exchange data following the diagram bellow:
+The application was divided into a front and a backend.
+The backend stored the mines positions, the player ID, its best time and other statistics; and the frontend took care of the logic of the game.
+They exchanged data following the diagram bellow:
 
 <p align="center">
   <img width="1000" alt="Project Diagram" src="minesweeper-crop.png">
@@ -20,7 +20,12 @@ They will exchange data following the diagram bellow:
 
 ## Backend
 
-We will start by creating a backend RESTful API using Express.
+The backend is a RESTful API built using Express.
+After the development and tests of the API, a catchall endpoint was created to redirect any request to the frontend part of the application. This way, both parts could be hosted together.
+
+### The Endpoints
+
+
 
 ### Configuring the environment
 1. Create a new folder for the project, open the terminal in that folder and type **`npm init`**.
