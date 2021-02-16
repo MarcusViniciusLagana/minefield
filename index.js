@@ -61,7 +61,7 @@ let player = {};
             rowsNumber,
             columnsNumber,
             isGameOver: false,
-            roundsPlayed: [0, 0, 0],
+            gamesPlayed: [0, 0, 0],
             victories: [0, 0, 0],
             bestTime: [999, 999, 999]
         }
@@ -99,8 +99,8 @@ let player = {};
             return;
         };
         
-        const {roundsPlayed, victories, bestTime} = player.game;
-        res.send({status: 'ok', msg: `Returning player ${req.params.id} data`, roundsPlayed, victories, bestTime});
+        const {gamesPlayed, victories, bestTime} = player.game;
+        res.send({status: 'ok', msg: `Returning player ${req.params.id} data`, gamesPlayed, victories, bestTime});
     });
 
     // ==================== Get Number of Mines Around ======================================== GET
@@ -132,7 +132,7 @@ let player = {};
 
         if (isMine) {
             player.game.isGameOver = true;
-            player.game.roundsPlayed[player.game.level] ++;
+            player.game.gamesPlayed[player.game.level] ++;
             await players.updateOne(
                 { _id: mongodb.ObjectId(player.id) },
                 { $set: {game: player.game} }
@@ -143,7 +143,7 @@ let player = {};
     });
 
 
-    // ==================== Update Winning Stats ============================================== GET
+    // ==================== Update Winning Status ============================================= GET
     app.put('/api/win/:id', async (req, res) => {
         
         // Validating Player ID
@@ -170,13 +170,19 @@ let player = {};
 
         for (const mine of player.game.minesPositions) {
             if (!mines.includes(mine)) {
-                res.send({status: 'failed', msg: 'To win the game, it is necessary to correctly inform all mines positions'});
+                player.game.isGameOver = true;
+                player.game.gamesPlayed[player.game.level] ++;
+                await players.updateOne(
+                    { _id: mongodb.ObjectId(player.id) },
+                    { $set: {game: player.game} }
+                );
+                res.send({status: 'ok', msg: 'Game finished, player lost!'});
                 return;
             }
         };
 
         player.game.isGameOver = true;
-        player.game.roundsPlayed[player.game.level] ++;
+        player.game.gamesPlayed[player.game.level] ++;
         player.game.victories[player.game.level] ++;
         if (time < player.game.bestTime[player.game.level]) player.game.bestTime[player.game.level] = time;
         await players.updateOne(
@@ -184,7 +190,7 @@ let player = {};
             { $set: {game: player.game} }
         );
 
-        res.send({status: 'ok', msg: 'Player Wins'});
+        res.send({status: 'ok', msg: 'Game finished, player wins!'});
     });
 
     // ==================== Restart the Game ========================================================== PUT
